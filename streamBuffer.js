@@ -1,12 +1,12 @@
 import fs from "fs";
 
-const data = Buffer.from("Hello, World! rfeerfbv erv eveveeve");
-const zeros = Buffer.alloc(10, 0); // 0 lardan ibaret buffer yaradir. 1 ci yazdigimiz olcusu(byte) 2 ci yazdigimiz ise buffere ne yazacagidir
-console.log(zeros)
-// console.log(data);
+// const data = Buffer.from("Hello, World! rfeerfbv erv eveveeve");
+// const zeros = Buffer.alloc(10, 0); // 0 lardan ibaret buffer yaradir. 1 ci yazdigimiz olcusu(byte) 2 ci yazdigimiz ise buffere ne yazacagidir
+// console.log(zeros)
+// // console.log(data);
 
-const readStream = fs.createReadStream("demo.txt", { encoding: "utf8" });
-const writeStream = fs.createWriteStream("write.txt", { encoding: "base64" });
+// const readStream = fs.createReadStream("demo.txt", { encoding: "utf8" });
+// const writeStream = fs.createWriteStream("write.txt", { encoding: "base64" });
 
 // data.txt faylini oxuduq
 // readStream.on("data", (chunk) => {
@@ -18,3 +18,14 @@ const writeStream = fs.createWriteStream("write.txt", { encoding: "base64" });
 // readStream.pipe(writeStream);
 
 // Eger elave her hansisa bir is goreceyikse on isledmek daha yaxsidir.
+
+
+// Class Task
+
+const files = ["arr1.txt", "arr2.txt", 'arr3.txt']
+const writeStream = fs.createWriteStream("write.txt", { encoding: "utf8" });
+files.forEach(element => {
+    const readStream = fs.createReadStream(element,{ encoding: "utf8" });
+    readStream.pipe(writeStream);
+
+});
